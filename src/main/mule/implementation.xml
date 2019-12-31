@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:american-flights-api="http://www.mulesoft.org/schema/mule/american-flights-api"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/american-flights-api http://www.mulesoft.org/schema/mule/american-flights-api/current/mule-american-flights-api.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="flightsFlow" doc:id="7a16f945-b731-4501-bf85-62f4bb929c4a" >
+		<http:listener doc:name="GET /flights" doc:id="7333eab4-0c77-4a44-b909-07e6dfa91494" config-ref="HTTP_Listener_config" path="/flights" allowedMethods="GET"/>
+		<american-flights-api:get-flights doc:name="Get flights" doc:id="e0ebe2b0-3f09-491b-b664-19f56295b5c3" config-ref="American_Flights_API_Config" client-id="${secure::american.client_id}" client-secret="${secure::american.client_secret}" request-streaming-mode="NEVER"/>
+		<logger level="INFO" doc:name='# flights returned' doc:id="99161bce-86f0-47ae-94b9-c8be232f3d68" message='#["Returned $(sizeOf(payload as Array)) flights..."]'/>
+	</flow>
+</mule>

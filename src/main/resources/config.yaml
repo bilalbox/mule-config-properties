@@ -1,0 +1,14 @@
+# NOTE: This value should be specified in Runtime Manager application properties, or as a runtime argument "./mule -Dsecure.key=mule123"
+secure:
+  key: "" # mule123
+
+http:
+  port: "8081"
+
+american:
+  host: "training4-american-api.cloudhub.io"
+  basePath: "/"
+  port: "80"
+  protocol: "HTTP"
+  client_id: "![/Y8k7inov6KxB6otAjat0hnm6N5MWbGe8qIEJtEbJRtTaiWc7d5DgQ==]"
+  client_secret: "![PzHHkm5mzAT556cwRZ9ojiv2W6XiYStSzF0obf5jvYoS7iJaxiHAYg==]"
